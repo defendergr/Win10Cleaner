@@ -11,7 +11,7 @@ import ctypes
 import enum
 import sys
 
-class Cleaner():#TODO put ui to thread
+class Cleaner():
     def __init__(self, root):
         '''window & app settings'''
         self.root = root
@@ -81,7 +81,6 @@ class Cleaner():#TODO put ui to thread
         self.start2()
         self.registryPaths()
         self.start3()
-        # TODO na ta balw na sunexizoun otan teliosh to 3
         while self.th.is_alive():
             if self.debug == 1: print("waiting...")
             time.sleep(1)
@@ -118,20 +117,6 @@ class Cleaner():#TODO put ui to thread
         self.th = threading.Thread(target=self.clean_manager, daemon=True)
         self.th.start()
         if self.debug == 1: print('here runs on start 3 after process')
-
-    # def fakeLoad(self, prosses):
-    #     '''fake progress bar for not trackable prosseces'''
-    #     self.pg_bar['value'] = 0
-    #     if self.debug == 1: print('here runs on fakeLoad before while')
-    #     while prosses == True:
-    #         self.pg_bar['value'] += 10
-    #         time.sleep(1)
-    #         if self.pg_bar['value'] == 100:
-    #             prosses = False
-    #             self.pg_bar['value'] = 0
-    #         if self.debug == 1: print('here runs on fakeLoad inside while '+str(self.pg_bar['value']))
-    #     if self.debug == 1: print('here runs on fakeLoad after while')
-
 
     def info(self):
         '''info about app'''
